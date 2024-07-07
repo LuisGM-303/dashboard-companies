@@ -1,5 +1,6 @@
 "use client";
 
+import { Logo } from "../Logo";
 import { SidebarItem } from "../SidebarItem";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";

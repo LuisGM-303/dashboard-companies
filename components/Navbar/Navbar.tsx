@@ -3,11 +3,12 @@ import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Input } from "../ui/input";
 import { UserButton } from "@clerk/nextjs";
 import { SidebarRoutes } from "../SidebarRoutes";
+import { ThemeToggle } from "../ToggleTheme";
 
 export function Navbar() {
   return (
-    <div className="flex items-center px-2 gap-x-4 md:px-6 justify-between w-full bg-background border-b h-20">
-      <div className="block md:hidden">
+    <nav className="flex items-center px-2 gap-x-4 md:px-6 justify-between w-full bg-background border-b h-20">
+      <div className="block xl:hidden">
         <Sheet>
           <SheetTrigger className="flex items-center">
             <Menu />
@@ -23,9 +24,9 @@ export function Navbar() {
       </div>
 
       <div className="flex gap-x-2 items-center">
-        <p>Toggle Theme</p>
+        <ThemeToggle />
         <UserButton />
       </div>
-    </div>
+    </nav>
   );
 }
