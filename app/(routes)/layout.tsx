@@ -1,3 +1,4 @@
+import { Navbar } from "@/components/Navbar/Navbar";
 import React from "react";
 
 export default function LayoutDashboard({
@@ -9,7 +10,7 @@ export default function LayoutDashboard({
     <div className="flex w-full h-full">
       <div className="hidden xl:block w-80 h-full xl:fixed">Sidebar</div>
       <div className="w-full xl:ml-80">
-        <p>Navbar</p>
+        <Navbar />
         <div className="p-4 bg-[#fafbfc] dark:bg-secondary">{children}</div>
       </div>
     </div>
