@@ -24,6 +24,8 @@ import {
 } from "@/components/ui/select";
 import { UploadButton } from "@/utils/uploadthing";
 import { toast } from "@/components/ui/use-toast";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   name: z.string(),
@@ -36,6 +38,7 @@ const formSchema = z.object({
 
 export function FormCreateCustomer(props: FormCreateCustomersProps) {
   const { setOpenModalCreate } = props;
+  const router = useRouter();
   const [photoUploaded, setPhotoUploaded] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -53,7 +56,19 @@ export function FormCreateCustomer(props: FormCreateCustomersProps) {
   const { isValid } = form.formState;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    try {
+      axios.post("/api/company", values);
+      toast({
+        title: "Company created",
+      });
+      router.refresh();
+      setOpenModalCreate(false);
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        variant: "destructive",
+      });
+    }
   };
   return (
     <div>
@@ -112,6 +127,23 @@ export function FormCreateCustomer(props: FormCreateCustomersProps) {
             />
             <FormField
               control={form.control}
+              name="website"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Website</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="www.rafatarrega.com"
+                      type="text"
+                      {...field}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
               name="phone"
               render={({ field }) => (
                 <FormItem>
@@ -122,6 +154,18 @@ export function FormCreateCustomer(props: FormCreateCustomersProps) {
                       type="text"
                       {...field}
                     />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="cif"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>CIF</FormLabel>
+                  <FormControl>
+                    <Input placeholder="B-1234567" type="text" {...field} />
                   </FormControl>
                 </FormItem>
               )}

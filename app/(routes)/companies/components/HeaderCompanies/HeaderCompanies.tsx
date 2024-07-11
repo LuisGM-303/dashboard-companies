@@ -31,7 +31,7 @@ export function HeaderCompanies() {
             </DialogDescription>
           </DialogHeader>
 
-          <FormCreateCustomer />
+          <FormCreateCustomer setOpenModalCreate={setOpenModelCreate} />
         </DialogContent>
       </Dialog>
     </div>
