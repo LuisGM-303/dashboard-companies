@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronUp } from "lucide-react";
 
 import {
   ColumnDef,
@@ -21,9 +21,6 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { TableIntegrationsProps } from "./TableIntegrations.types";
@@ -43,14 +40,14 @@ import {
 const data: TableIntegrationsProps[] = [
   {
     app: "Stripe",
-    icon: "/images/stripe.jpg",
+    icon: "/images/stripe.webp",
     type: "Finance",
     rate: 60,
     profit: 450,
   },
   {
     app: "Zapier",
-    icon: "/images/zapier.jpg",
+    icon: "/images/zapier.webp",
     type: "CRM",
     rate: 20,
     profit: 123.5,
@@ -59,7 +56,7 @@ const data: TableIntegrationsProps[] = [
 
 export const columns: ColumnDef<TableIntegrationsProps>[] = [
   {
-    id: "icon",
+    accessorKey: "icon",
     header: "LOGO",
     cell: ({ row }) => (
       <div className="capitalize">
@@ -87,7 +84,7 @@ export const columns: ColumnDef<TableIntegrationsProps>[] = [
     ),
   },
   {
-    id: "profit",
+    accessorKey: "profit",
     header: ({ column }) => (
       <Button
         variant="ghost"
@@ -139,10 +136,10 @@ export function TableIntegrations() {
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter applications..."
+          value={(table.getColumn("app")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("app")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />

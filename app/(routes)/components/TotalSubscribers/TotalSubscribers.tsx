@@ -7,7 +7,7 @@ import { dataTotalSubscribers } from "./TotalSubscribers.data";
 
 export function TotalSubscribers() {
   return (
-    <div className="mb-4 lg:mb-0 shadow-md bg-background rounded-lg p-5 w-full md:w-96 hover:shadow-lg transition">
+    <div className="mb-4 lg:mb-0 shadow-md bg-background rounded-lg p-5 w-full xl:w-96 hover:shadow-lg transition">
       <div className="flex gap-x-2 items-center mb-4">
         <CustomIcon icon={Percent} />
         <p className="text-xl">Total Subscribers</p>
